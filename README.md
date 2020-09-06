@@ -13,6 +13,15 @@
 | municipality.geojson | 市町村等をまとめた地域 |
 | city.geojson         | 二次細分区             |
 
+### tiles
+
+| レイヤー名   | 区域                   | ズームレベル |
+| ------------ | ---------------------- | ------------ |
+| pref         | 府県予報区             | 4~10         |
+| firstarea    | 一次細分区             | 5~10         |
+| municipality | 市町村等をまとめた地域 | 7~10         |
+| city         | 二次細分区             | 7~10         |
+
 ### fields
 
 | フィールド名        | 説明                             | pref | firstarea | municipality | city |
@@ -29,6 +38,11 @@
 | citycode            | 二次細分区コード                 | ○    | ○         | ○            | ○    | ○ |
 | cityname            | 二次細分区名                     | ○    | ○         | ○            | ○    | ○ |
 | cityname_kn         | 二次細分区名（かな）             | ○    | ○         | ○            | ○    | ○ |
+
+## Dependencies
+
+- [mapshaper](https://github.com/mbloch/mapshaper)
+- [tippecanoe](https://github.com/mapbox/tippecanoe)
 
 ## Make
 
@@ -57,6 +71,13 @@ geoJSON ファイルを作成する．[mapshaper](https://github.com/mbloch/maps
 
 ```
 # ./geojson
+./make.sh
+```
+
+ベクトルタイルを作成する．
+
+```
+# ./tiles
 ./make.sh
 ```
 
