@@ -32,9 +32,9 @@
 | firstareacode       | 一次細分区コード                 | ○    | ○         | ×            | ×    |
 | firstareaname       | 一次細分区名                     | ○    | ○         | ×            | ×    |
 | firstareaname_kn    | 一次細分区名（かな）             | ○    | ○         | ×            | ×    |
-| municipalitycode    | 市町村等をまとめた地域コード     | ○    | ○         | ○            | ○    | × |
-| municipalityname    | 市町村等をまとめた地域名         | ○    | ○         | ○            | ○    | × |
-| municipalityname_kn | 市町村等をまとめた地域名（かな） | ○    | ○         | ○            | ○    | × |
+| municipalitycode    | 市町村等をまとめた地域コード     | ○    | ○         | ○            | ×    |
+| municipalityname    | 市町村等をまとめた地域名         | ○    | ○         | ○            | ×    |
+| municipalityname_kn | 市町村等をまとめた地域名（かな） | ○    | ○         | ○            | ×    |
 | citycode            | 二次細分区コード                 | ○    | ○         | ○            | ○    | ○ |
 | cityname            | 二次細分区名                     | ○    | ○         | ○            | ○    | ○ |
 | cityname_kn         | 二次細分区名（かな）             | ○    | ○         | ○            | ○    | ○ |
