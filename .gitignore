@@ -1,0 +1,16 @@
+node_modules
+
+.vscode
+.venv
+
+.eslintignore
+.eslintrc.js
+.prettierrc.json
+.stylelintignore
+.stylelintrc.js
+
+.node-version
+.python-version
+
+jma/*
+!jma/get.sh
