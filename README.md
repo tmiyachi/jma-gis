@@ -81,6 +81,14 @@ geoJSON ファイルを作成する．[mapshaper](https://github.com/mbloch/maps
 ./make.sh
 ```
 
+## Sample
+
+```
+# ./
+npm run start
+
+```
+
 ## Refference
 
 このデータの作成には気象庁公開のデータを利用しています．
