@@ -64,7 +64,7 @@ df_pref = df_pref.loc[:, ['prefcode', 'name', 'name_kn']]
 df_pref.columns = ['prefcode', 'prefname', 'prefname_kn']
 
 # csvで保存
-df_city.to_csv('citycode.csv', index=False)
+df_city.loc[:, ['citycode', 'cityname', 'cityname_kn']].to_csv('citycode.csv', index=False)
 df_muni.to_csv('municipalitycode.csv', index=False)
 df_firstarea.to_csv('firstareacode.csv', index=False)
 df_pref.to_csv('prefcode.csv', index=False)
