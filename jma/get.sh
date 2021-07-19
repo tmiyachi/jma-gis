@@ -9,7 +9,7 @@
 # XMLZIPとGISZIPに指定する．
 
 # 気象庁公開のXML個別コード表のzipファイル名
-XMLZIP=jmaxml_20200826_Code.zip
+XMLZIP=jmaxml_20210707_Code.zip
 # 気象庁公開の市町村等（気象警報等）GISデータのzipファイル名
 GISZIP=20200526_AreaInformationCity_weather_GIS.zip
 
