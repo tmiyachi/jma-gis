@@ -6,38 +6,38 @@
 
 ### geojson
 
-| ファイル名           | 区域                   |
-| -------------------- | ---------------------- |
-| pref.geojson         | 府県予報区             |
-| firstarea.geojson    | 一次細分区             |
-| municipality.geojson | 市町村等をまとめた地域 |
-| city.geojson         | 二次細分区             |
+| ファイル名         | 区域                   |
+| ------------------ | ---------------------- |
+| pref.geojson       | 府県予報区             |
+| firstarea.geojson  | 一次細分区             |
+| matomearea.geojson | 市町村等をまとめた地域 |
+| city.geojson       | 二次細分区             |
 
 ### tiles
 
-| レイヤー名   | 区域                   | ズームレベル |
-| ------------ | ---------------------- | ------------ |
-| pref         | 府県予報区             | 4~10         |
-| firstarea    | 一次細分区             | 5~10         |
-| municipality | 市町村等をまとめた地域 | 7~10         |
-| city         | 二次細分区             | 7~10         |
+| レイヤー名 | 区域                   | ズームレベル |
+| ---------- | ---------------------- | ------------ |
+| pref       | 府県予報区             | 4~10         |
+| firstarea  | 一次細分区             | 5~10         |
+| matomearea | 市町村等をまとめた地域 | 7~10         |
+| city       | 二次細分区             | 7~10         |
 
 ### fields
 
-| フィールド名        | 説明                             | pref | firstarea | municipality | city |
-| ------------------- | -------------------------------- | ---- | --------- | ------------ | ---- |
-| prefcode            | 府県予報区コード                 | ○    | ×         | ×            | ×    |
-| prefname            | 府県予報区名                     | ○    | ×         | ×            | ×    |
-| prefname_kn         | 府県予報区名（かな）             | ○    | ×         | ×            | ×    |
-| firstareacode       | 一次細分区コード                 | ○    | ○         | ×            | ×    |
-| firstareaname       | 一次細分区名                     | ○    | ○         | ×            | ×    |
-| firstareaname_kn    | 一次細分区名（かな）             | ○    | ○         | ×            | ×    |
-| municipalitycode    | 市町村等をまとめた地域コード     | ○    | ○         | ○            | ×    |
-| municipalityname    | 市町村等をまとめた地域名         | ○    | ○         | ○            | ×    |
-| municipalityname_kn | 市町村等をまとめた地域名（かな） | ○    | ○         | ○            | ×    |
-| citycode            | 二次細分区コード                 | ○    | ○         | ○            | ○    | ○ |
-| cityname            | 二次細分区名                     | ○    | ○         | ○            | ○    | ○ |
-| cityname_kn         | 二次細分区名（かな）             | ○    | ○         | ○            | ○    | ○ |
+| フィールド名      | 説明                             | pref | firstarea | matomearea | city |
+| ----------------- | -------------------------------- | ---- | --------- | ---------- | ---- |
+| prefcode          | 府県予報区コード                 | ○    | ×         | ×          | ×    |
+| prefname          | 府県予報区名                     | ○    | ×         | ×          | ×    |
+| prefname_kn       | 府県予報区名（かな）             | ○    | ×         | ×          | ×    |
+| firstareacode     | 一次細分区コード                 | ○    | ○         | ×          | ×    |
+| firstareaname     | 一次細分区名                     | ○    | ○         | ×          | ×    |
+| firstareaname_kn  | 一次細分区名（かな）             | ○    | ○         | ×          | ×    |
+| matomeareacode    | 市町村等をまとめた地域コード     | ○    | ○         | ○          | ×    |
+| matomeareaname    | 市町村等をまとめた地域名         | ○    | ○         | ○          | ×    |
+| matomeareaname_kn | 市町村等をまとめた地域名（かな） | ○    | ○         | ○          | ×    |
+| citycode          | 二次細分区コード                 | ○    | ○         | ○          | ○    | ○ |
+| cityname          | 二次細分区名                     | ○    | ○         | ○          | ○    | ○ |
+| cityname_kn       | 二次細分区名（かな）             | ○    | ○         | ○          | ○    | ○ |
 
 ## Dependencies
 

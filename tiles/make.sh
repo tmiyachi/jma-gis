@@ -11,10 +11,10 @@ ATTRIBUTION='<a href="https://www.data.jma.go.jp/developer/gis.html">気象庁�
 rm -f ${TILEDIR}/*.mbtiles
 rm -r -f ${TILEDIR}/zxy
 
-for layer in city municipality firstarea pref; do
+for layer in city matomearea firstarea pref; do
     case $layer in
         "city") minzoom=7; maxzoom=10; id=citycode; ;;
-        "municipality") minzoom=7; maxzoom=10; id=municipalitycode; ;;
+        "matomearea") minzoom=7; maxzoom=10; id=matomeareacode; ;;
         "firstarea") minzoom=5; maxzoom=10; id=firstareacode; ;;
         "pref") minzoom=4; maxzoom=10; id=prefcode; ;;
     esac
@@ -25,5 +25,5 @@ for layer in city municipality firstarea pref; do
 done
 tile-join --force --name="jmagis" --description="JMA GIS vector tiles" --attribution="${ATTRIBUTION}" \
     --output-to-directory=${TILEDIR}/zxy --no-tile-compression \
-    pref.mbtiles firstarea.mbtiles municipality.mbtiles city.mbtiles
-rm -f pref.mbtiles firstarea.mbtiles municipality.mbtiles city.mbtiles
+    pref.mbtiles firstarea.mbtiles matomearea.mbtiles city.mbtiles
+rm -f pref.mbtiles firstarea.mbtiles matomearea.mbtiles city.mbtiles

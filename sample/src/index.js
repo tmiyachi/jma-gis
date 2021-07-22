@@ -39,10 +39,10 @@ const map = new mapboxgl.Map({
         },
       },
       {
-        id: 'municipality-lines',
+        id: 'matomearea-lines',
         type: 'line',
         source: 'jmagis-vector',
-        'source-layer': 'municipality',
+        'source-layer': 'matomearea',
         layout: {},
         paint: {
           'line-color': '#627BC1',
@@ -144,7 +144,7 @@ map.on('load', function () {
 <table>
 <tr><td>府県予報区</td><td>${f.prefname}（${f.prefname_kn}）</td></tr>
 <tr><td>一次細分区</td><td>${f.firstareaname}（${f.firstareaname_kn}）</td></tr>
-<tr><td>市町村等をまとめた地域</td><td>${f.municipalityname}（${f.municipalityname_kn}）</td></tr>
+<tr><td>市町村等をまとめた地域</td><td>${f.matomeareaname}（${f.matomeareaname_kn}）</td></tr>
 <tr><td>二次細分区</td><td>${f.cityname}（${f.cityname_kn}）</td></tr>
 </table>`;
       contentInfo.innerHTML = html;

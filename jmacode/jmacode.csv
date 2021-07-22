@@ -1,4 +1,4 @@
-citycode,cityname,cityname_kn,municipalitycode,municipalityname,municipalityname_kn,firstareacode,firstareaname,firstareaname_kn,prefcode,prefname,prefname_kn
+citycode,cityname,cityname_kn,matomeareacode,matomeareaname,matomeareaname_kn,firstareacode,firstareaname,firstareaname_kn,prefcode,prefname,prefname_kn
 0110000,札幌市,さっぽろし,016012,石狩中部,いしかりちゅうぶ,016010,石狩地方,いしかりちほう,016010,石狩地方,いしかりちほう
 0120200,函館市,はこだてし,017012,渡島東部,おしまとうぶ,017010,渡島地方,おしまちほう,017010,渡島地方,おしまちほう
 0120300,小樽市,おたるし,016031,後志北部,しりべしほくぶ,016030,後志地方,しりべしちほう,016030,後志地方,しりべしちほう

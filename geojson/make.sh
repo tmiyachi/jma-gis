@@ -38,7 +38,7 @@ $MSCMD -i - -join ${JMACODE} keys=citycode,citycode string-fields=* -o ${GEODIR}
 
 # コードレベルでまとめる
 echo -e "\e[1;33mAggregate groups of features using a code field...\e[0;m"
-$MSCMD ${GEODIR}/city.geojson -dissolve municipalitycode copy-fields=prefcode,prefname,firstareacode,firstareaneme,municipalityname -o ${GEODIR}/municipality.geojson force
+$MSCMD ${GEODIR}/city.geojson -dissolve matomeareacode copy-fields=prefcode,prefname,firstareacode,firstareaneme,matomeareaname -o ${GEODIR}/matomearea.geojson force
 $MSCMD ${GEODIR}/city.geojson -dissolve firstareacode copy-fields=prefcode,prefname,firsareaneme -o ${GEODIR}/firstarea.geojson force
 $MSCMD ${GEODIR}/city.geojson -dissolve prefcode copy-fields=prefname -o ${GEODIR}/pref.geojson force
 
