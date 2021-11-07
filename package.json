@@ -33,9 +33,9 @@
     "webpack-dev-server": "^4.4.0"
   },
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "build:dev": "webpack --config webpack.dev.js --watch",
-    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config sample/webpack.prod.js",
+    "build:dev": "webpack --config sample/webpack.dev.js --watch",
+    "start": "webpack serve --open --config sample/webpack.dev.js",
     "lint:js": "eslint sample/src/**/*.js",
     "lint:css": "stylelint sample/src/**/*.css",
     "lint": "npm-run-all --parallel lint:*"

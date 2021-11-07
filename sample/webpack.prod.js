@@ -13,7 +13,9 @@ module.exports = merge(common, {
   },
   plugins: [
     new DefinePlugin({
-      MAPHOST: JSON.stringify('https://github.com/tmiyachi/jma-gis'),
+      MAPHOST: JSON.stringify(
+        'https://raw.githubusercontent.com/tmiyachi/jma-gis/master'
+      ),
     }),
   ],
 });
