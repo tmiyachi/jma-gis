@@ -4,5 +4,6 @@ module.exports = {
     'stylelint-config-recess-order',
     'stylelint-prettier/recommended',
   ],
-  rules: {}
+  overrides: [],
+  rules: {},
 };

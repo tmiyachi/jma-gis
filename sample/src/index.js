@@ -2,7 +2,8 @@ import mapboxgl from 'mapbox-gl';
 import '@/main.css';
 
 // タイルをホストしているサーバーのルート
-const maphost = 'http://localhost:8080';
+// eslint-disable-next-line no-undef
+const maphost = MAPHOST ?? 'http://localhost';
 
 // マップオブジェクト
 const map = new mapboxgl.Map({
