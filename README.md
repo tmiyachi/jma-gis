@@ -2,6 +2,9 @@
 
 気象庁公開の予報区データを加工したベクトルタイル（データ基準日 2020/05/26）
 
+## Demo
+https://tmiyachi.github.io/jma-gis/
+
 ## Data
 
 ### geojson

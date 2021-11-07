@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name]-[contenthash].bundle.js',
     assetModuleFilename: 'assets/[name][ext]',
   },
   resolve: {
@@ -48,7 +48,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].bundle.css',
+      filename: '[name]-[contenthash].bundle.css',
     }),
     new HtmlWebpackPlugin({
       title: 'jma-gis-demo',
