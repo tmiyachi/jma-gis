@@ -4,7 +4,7 @@
   "description": "Sample page using vector tiles processed from JMA GIS shape file",
   "main": "index.js",
   "dependencies": {
-    "mapshaper": "^0.5.83"
+    "mapshaper": "^0.5.91"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
