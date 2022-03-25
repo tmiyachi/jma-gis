@@ -9,9 +9,9 @@
 # XMLZIPとGISZIPに指定する．
 
 # 気象庁公開のXML個別コード表のzipファイル名
-XMLZIP=jmaxml_20211004_Code.zip
+XMLZIP=jmaxml_20220314_Code.zip
 # 気象庁公開の市町村等（気象警報等）GISデータのzipファイル名
-GISZIP=20200526_AreaInformationCity_weather_GIS.zip
+GISZIP=20220324_AreaInformationCity_weather_GIS.zip
 
 aria2c http://xml.kishou.go.jp/${XMLZIP}
 unzip -p ${XMLZIP} '*AreaInformationCity-AreaForecastLocalM*xls' > AreaInformationCity.xls
