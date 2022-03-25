@@ -2,7 +2,7 @@ module.exports = {
   extends: [
     'stylelint-config-recommended',
     'stylelint-config-recess-order',
-    'stylelint-prettier/recommended',
+    'stylelint-config-prettier',
   ],
   overrides: [],
   rules: {},
