@@ -1,9 +1,10 @@
 ## JMA-GIS
 
-気象庁公開の予報区データを加工したベクトルタイル（データ基準日 2022/03/24）
+気象庁公開の予報区データを加工したベクトルタイル（データ基準日 2023/03/09）
 
 ## Demo
-https://tmiyachi.github.io/jma-gis/
+
+<https://tmiyachi.github.io/jma-gis/>
 
 ## Data
 
