@@ -45,4 +45,4 @@ $MSCMD ${GEODIR}/city.geojson -dissolve matomeareacode copy-fields=prefcode,pref
 $MSCMD ${GEODIR}/city.geojson -dissolve firstareacode copy-fields=prefcode,prefname,firsareaneme -o ${GEODIR}/firstarea.geojson force
 $MSCMD ${GEODIR}/city.geojson -dissolve prefcode copy-fields=prefname -o ${GEODIR}/pref.geojson force
 
-#rm ${GEODIR}/tmp.geojson
+rm ${GEODIR}/tmp.geojson
