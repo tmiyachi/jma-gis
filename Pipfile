@@ -10,6 +10,3 @@ autopep8 = "*"
 [packages]
 pandas = "*"
 xlrd = "*"
-
-[requires]
-python_version = "3.9"
