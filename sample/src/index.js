@@ -103,13 +103,13 @@ map.on('load', function () {
       if (hoveredCityId) {
         map.setFeatureState(
           { source: 'jmagis-vector', sourceLayer: 'city', id: hoveredCityId },
-          { hover: false }
+          { hover: false },
         );
       }
       hoveredCityId = e.features[0].id;
       map.setFeatureState(
         { source: 'jmagis-vector', sourceLayer: 'city', id: hoveredCityId },
-        { hover: true }
+        { hover: true },
       );
       setInfoPanel(e.features[0].properties);
     }
@@ -119,11 +119,16 @@ map.on('load', function () {
     if (hoveredCityId) {
       map.setFeatureState(
         { source: 'jmagis-vector', sourceLayer: 'city', id: hoveredCityId },
-        { hover: false }
+        { hover: false },
       );
       setInfoPanel(null);
     }
     hoveredCityId = null;
+
+    map.getCanvas().style.cursor = '';
+  });
+  map.on('mouseenter', 'city-fills', () => {
+    map.getCanvas().style.cursor = 'pointer';
   });
 
   // ズームレベルを表示
@@ -143,10 +148,10 @@ map.on('load', function () {
     if (f) {
       let html = `
 <table>
-<tr><td>府県予報区</td><td>${f.prefname}（${f.prefname_kn}）</td></tr>
-<tr><td>一次細分区</td><td>${f.firstareaname}（${f.firstareaname_kn}）</td></tr>
-<tr><td>市町村等をまとめた地域</td><td>${f.matomeareaname}（${f.matomeareaname_kn}）</td></tr>
-<tr><td>二次細分区</td><td>${f.cityname}（${f.cityname_kn}）</td></tr>
+<tr><td>府県予報区</td><td>${f.prefname ?? '-'}（${f.prefname_kn ?? '-'}）</td></tr>
+<tr><td>一次細分区</td><td>${f.firstareaname ?? '-'}（${f.firstareaname_kn ?? '-'}）</td></tr>
+<tr><td>市町村等をまとめた地域</td><td>${f.matomeareaname ?? '-'}（${f.matomeareaname_kn ?? '-'}）</td></tr>
+<tr><td>二次細分区</td><td>${f.cityname ?? '-'}（${f.cityname_kn ?? '-'}）</td></tr>
 </table>`;
       contentInfo.innerHTML = html;
     } else {
