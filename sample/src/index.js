@@ -1,4 +1,5 @@
-import mapboxgl from 'mapbox-gl';
+import maplibregl from 'maplibre-gl';
+// import 'maplibre-gl/dist/maplibre-gl.css';
 import '@/main.css';
 
 // タイルをホストしているサーバーのルート
@@ -6,7 +7,7 @@ import '@/main.css';
 const maphost = MAPHOST ?? 'http://localhost';
 
 // マップオブジェクト
-const map = new mapboxgl.Map({
+const map = new maplibregl.Map({
   container: 'map',
   center: [135, 35],
   zoom: 7,
