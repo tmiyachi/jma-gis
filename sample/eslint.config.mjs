@@ -1,6 +1,6 @@
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import pluginVue from 'eslint-plugin-vue';
+import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 /**
@@ -30,6 +30,6 @@ export default defineConfig([
       ],
     },
   },
-  ...pluginVue.configs['flat/recommended'],
+  js.configs.recommended,
   eslintConfigPrettier,
 ]);

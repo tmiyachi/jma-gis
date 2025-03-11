@@ -1,4 +1,4 @@
-import maplibregl from 'maplibre-gl';
+import * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import '@/main.css';
 
@@ -7,7 +7,7 @@ import '@/main.css';
 const maphost = MAPHOST ?? 'http://localhost';
 
 // マップオブジェクト
-const map = new maplibregl.Map({
+const map = new maplibregl.default.Map({
   container: 'map',
   center: [135, 35],
   zoom: 7,
@@ -91,8 +91,8 @@ const map = new maplibregl.Map({
 });
 
 // コントロールの追加
-map.addControl(new mapboxgl.ScaleControl());
-map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new maplibregl.default.ScaleControl());
+map.addControl(new maplibregl.default.NavigationControl());
 
 // loadイベント
 map.on('load', function () {

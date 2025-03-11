@@ -29,9 +29,9 @@
   "scripts": {
     "build": "vite build --config sample/vite.config.mjs",
     "start": "vite dev --config sample/vite.config.mjs",
-    "lint:eslint": "eslint sample/src/**/*.js",
-    "lint:stylelint": "stylelint sample/src/**/*.css",
-    "lint:prettier": "prettier sample/src/**/*.{js,css} --check",
+    "lint:eslint": "eslint sample/src/**/*.js --config sample/eslint.config.mjs",
+    "lint:stylelint": "stylelint sample/src/**/*.css --config sample/stylelint.config.mjs",
+    "lint:prettier": "prettier sample/src/**/*.{js,css} --check --config sample/prettier.config.mjs",
     "lint": "run-p lint:*",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:stylelint": "npm run lint:stylelint -- --fix",
