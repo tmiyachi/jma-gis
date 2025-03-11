@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   root: path.resolve(__dirname, 'src'),
+  base: './',
   publicDir: path.resolve(__dirname, 'public'),
   resolve: {
     extensions: ['.js'],
