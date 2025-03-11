@@ -21,11 +21,15 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
     rollupOptions: {
-      external: ['maplibre-gl'],
       output: {
-        entryFileNames: '[name].bundle.js',
-        chunkFileNames: 'js/[name].js',
-        assetFileNames: `assets/[name].[ext]`,
+        entryFileNames: '[name]-[hash].bundle.js',
+        chunkFileNames: 'js/[name]-[hash].js',
+        assetFileNames: `assets/[name]-[hash].[ext]`,
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
       },
     },
   },

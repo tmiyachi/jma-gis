@@ -4,6 +4,7 @@
   "description": "Sample page using vector tiles processed from JMA GIS shape file",
   "main": "index.js",
   "dependencies": {
+    "maplibre-gl": "^5.2.0",
     "mapshaper": "^0.6.102"
   },
   "devDependencies": {
