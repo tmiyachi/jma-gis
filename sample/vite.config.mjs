@@ -9,7 +9,10 @@ export default defineConfig(({ mode }) => {
   return {
     root: path.resolve(__dirname, 'src'),
     base: './',
-    publicDir: path.resolve(__dirname, 'public'),
+    publicDir:
+      mode === 'production'
+        ? path.resolve(__dirname, 'public')
+        : path.resolve(__dirname, '../tiles'),
     resolve: {
       extensions: ['.js'],
       alias: {
@@ -31,6 +34,16 @@ export default defineConfig(({ mode }) => {
               return 'vendor';
             }
           },
+        },
+      },
+    },
+
+    server: {
+      port: 8080,
+      proxy: {
+        '/tiles': {
+          target: 'http://localhost:8080',
+          rewrite: (path) => path.replace(/^\/tiles/, ''),
         },
       },
     },
