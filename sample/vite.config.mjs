@@ -35,6 +35,9 @@ export default defineConfig({
   },
 
   define: {
-    MAPHOST: JSON.stringify(`http://localhost:8080`),
+    MAPHOST:
+      mode === 'production'
+        ? 'https://raw.githubusercontent.com/tmiyachi/jma-gis/master'
+        : JSON.stringify(`http://localhost:8080`),
   },
 });
