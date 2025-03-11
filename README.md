@@ -29,7 +29,7 @@
 ### fields
 
 | フィールド名      | 説明                             | pref | firstarea | matomearea | city |
-| ----------------- | -------------------------------- | ---- | --------- | ---------- | ---- |
+| ----------------- | -------------------------------- | ---- | --------- | ---------- | ---- | --- |
 | prefcode          | 府県予報区コード                 | ○    | ×         | ×          | ×    |
 | prefname          | 府県予報区名                     | ○    | ×         | ×          | ×    |
 | prefname_kn       | 府県予報区名（かな）             | ○    | ×         | ×          | ×    |
@@ -39,9 +39,9 @@
 | matomeareacode    | 市町村等をまとめた地域コード     | ○    | ○         | ○          | ×    |
 | matomeareaname    | 市町村等をまとめた地域名         | ○    | ○         | ○          | ×    |
 | matomeareaname_kn | 市町村等をまとめた地域名（かな） | ○    | ○         | ○          | ×    |
-| citycode          | 二次細分区コード                 | ○    | ○         | ○          | ○    | ○ |
-| cityname          | 二次細分区名                     | ○    | ○         | ○          | ○    | ○ |
-| cityname_kn       | 二次細分区名（かな）             | ○    | ○         | ○          | ○    | ○ |
+| citycode          | 二次細分区コード                 | ○    | ○         | ○          | ○    | ○   |
+| cityname          | 二次細分区名                     | ○    | ○         | ○          | ○    | ○   |
+| cityname_kn       | 二次細分区名（かな）             | ○    | ○         | ○          | ○    | ○   |
 
 ## Dependencies
 
@@ -54,7 +54,9 @@
 
 ```
 npm install
-pipenv install
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
 ```
 
 気象庁データをダウンロードする．`jma/get.sh` の `XMLZIP`，`GISZIP` を最新のファイル名に変更する．
