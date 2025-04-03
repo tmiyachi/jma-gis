@@ -28,3 +28,7 @@ body {
 .hidden {
   display: none;
 }
+.px-2 {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}

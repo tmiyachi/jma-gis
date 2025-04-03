@@ -149,10 +149,26 @@ map.on('load', function () {
     if (f) {
       let html = `
 <table>
-<tr><td>府県予報区</td><td>${f.prefname ?? '-'}（${f.prefname_kn ?? '-'}）</td></tr>
-<tr><td>一次細分区</td><td>${f.firstareaname ?? '-'}（${f.firstareaname_kn ?? '-'}）</td></tr>
-<tr><td>市町村等をまとめた地域</td><td>${f.matomeareaname ?? '-'}（${f.matomeareaname_kn ?? '-'}）</td></tr>
-<tr><td>二次細分区</td><td>${f.cityname ?? '-'}（${f.cityname_kn ?? '-'}）</td></tr>
+  <tr>
+    <td class="px-2">府県予報区</td>
+    <td class="px-2">${f.prefname ?? '-'}（${f.prefname_kn ?? '-'}）</td>
+    <td class="px-2">${f.prefcode ?? '-'}</td>
+  </tr>
+  <tr>
+    <td class="px-2">一次細分区</td>
+    <td class="px-2">${f.firstareaname ?? '-'}（${f.firstareaname_kn ?? '-'}）</td>
+    <td class="px-2">${f.firstareacode ?? '-'}</td>
+  </tr>
+  <tr>
+    <td class="px-2">市町村等をまとめた地域</td>
+    <td class="px-2">${f.matomeareaname ?? '-'}（${f.matomeareaname_kn ?? '-'}）</td>
+    <td class="px-2">${f.matomeareacode ?? '-'}</td>
+  </tr>
+  <tr>
+    <td class="px-2">二次細分区</td>
+    <td class="px-2">${f.cityname ?? '-'}（${f.cityname_kn ?? '-'}）</td>
+    <td class="px-2">${f.citycode ?? '-'}</td>
+  </tr>
 </table>`;
       contentInfo.innerHTML = html;
     } else {
