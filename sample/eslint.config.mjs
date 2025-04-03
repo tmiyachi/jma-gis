@@ -9,6 +9,10 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 export default defineConfig([
   {
     ignores: ['dist/**/*', '.venv/**/*', 'sample/dist/**/*'],
+  },
+  js.configs.recommended,
+  eslintConfigPrettier,
+  {
     languageOptions: {
       ecmaVersion: 'latest',
       globals: {
@@ -30,6 +34,4 @@ export default defineConfig([
       ],
     },
   },
-  js.configs.recommended,
-  eslintConfigPrettier,
 ]);
