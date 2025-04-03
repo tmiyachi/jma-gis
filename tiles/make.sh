@@ -2,7 +2,10 @@
 # tippecanoeを使ってgeoJSONをベクトルタイルに変換する
 
 # directories settings
-SCRIPTDIR=$(cd $(dirname $0); pwd)
+SCRIPTDIR=$(
+    cd $(dirname $0)
+    pwd
+)
 TILEDIR=${SCRIPTDIR}
 GEODIR=${SCRIPTDIR}/../geojson
 
@@ -13,15 +16,27 @@ rm -r -f ${TILEDIR}/zxy
 
 for layer in city matomearea firstarea pref; do
     case $layer in
-        "city") minzoom=7; maxzoom=10; id=citycode; ;;
-        "matomearea") minzoom=7; maxzoom=10; id=matomeareacode; ;;
-        "firstarea") minzoom=5; maxzoom=10; id=firstareacode; ;;
-        "pref") minzoom=4; maxzoom=10; id=prefcode; ;;
+    "city")
+        minzoom=7
+        maxzoom=10
+        ;;
+    "matomearea")
+        minzoom=7
+        maxzoom=10
+        ;;
+    "firstarea")
+        minzoom=5
+        maxzoom=10
+        ;;
+    "pref")
+        minzoom=4
+        maxzoom=10
+        ;;
     esac
     tippecanoe --force \
-    --use-attribute-for-id=${id} --convert-stringified-ids-to-numbers \
-    --layer="${layer}" --maximum-zoom=${maxzoom} --minimum-zoom=${minzoom} -o ${TILEDIR}/${layer}.mbtiles \
-    ${GEODIR}/${layer}.geojson
+        --generate-ids \
+        --layer="${layer}" --maximum-zoom=${maxzoom} --minimum-zoom=${minzoom} -o ${TILEDIR}/${layer}.mbtiles \
+        ${GEODIR}/${layer}.geojson
 done
 tile-join --force --name="jmagis" --description="JMA GIS vector tiles" --attribution="${ATTRIBUTION}" \
     --output-to-directory=${TILEDIR}/zxy --no-tile-compression \
