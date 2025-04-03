@@ -59,10 +59,11 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-気象庁データをダウンロードする．`jma/get.sh` の `XMLZIP`，`GISZIP` を最新のファイル名に変更する．
+気象庁データをダウンロードする．`jma/get_latest.py` を実行して最新のファイル名を取得する．
 
 ```
 # ./jma
+python get_latest.py
 ./get.sh
 ```
 

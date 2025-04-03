@@ -7,11 +7,14 @@
 #  https://www.data.jma.go.jp/developer/gis.html
 # から最新の「XML個別コード表」と「市町村等（気象警報等）」のzipファイル名を確認して
 # XMLZIPとGISZIPに指定する．
+set -eu
+
+cd $(dirname $0)
 
 # 気象庁公開のXML個別コード表のzipファイル名
-XMLZIP=jmaxml_20250306_Code.zip
+XMLZIP=$(cat latest_xmlzip.txt)
 # 気象庁公開の市町村等（気象警報等）GISデータのzipファイル名
-GISZIP=20241025_AreaInformationCity_weather_GIS.zip
+GISZIP=$(cat latest_giszip.txt)
 
 aria2c http://xml.kishou.go.jp/${XMLZIP}
 unzip -p ${XMLZIP} '*AreaInformationCity-AreaForecastLocalM*xls' >AreaInformationCity.xls
