@@ -24,7 +24,7 @@ def get_xmlzip_name():
 
 
 def get_giszip_name():
-    # 気象庁防災情報XMLフォーマット技術資料のXML個別コード表
+    # 気象庁気象データ高度利用ポータルサイト > 予報区等GISデータの一覧
     with requests.get("https://www.data.jma.go.jp/developer/gis.html") as res:
         res.raise_for_status()
         soup = BeautifulSoup(res.text, "html.parser")
