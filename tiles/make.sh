@@ -18,19 +18,19 @@ for layer in city matomearea firstarea pref; do
     case $layer in
     "city")
         minzoom=7
-        maxzoom=10
+        maxzoom=14
         ;;
     "matomearea")
         minzoom=7
-        maxzoom=10
+        maxzoom=14
         ;;
     "firstarea")
         minzoom=5
-        maxzoom=10
+        maxzoom=14
         ;;
     "pref")
         minzoom=4
-        maxzoom=10
+        maxzoom=14
         ;;
     esac
     tippecanoe --force \

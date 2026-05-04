@@ -115,7 +115,6 @@ map.on('load', function () {
       setInfoPanel(e.features[0].properties);
     }
   });
-
   map.on('mouseleave', 'city-fills', function () {
     if (hoveredCityId) {
       map.setFeatureState(
@@ -133,7 +132,6 @@ map.on('load', function () {
   });
 
   // ズームレベルを表示
-
   const zoomInfo = document.getElementById('zoomlevel');
   zoomInfo.innerHTML = `ズームレベル: ${Math.round(map.getZoom() * 100) / 100}`;
   document.getElementById('control').classList.remove('hidden');
