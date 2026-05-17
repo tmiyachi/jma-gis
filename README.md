@@ -22,9 +22,9 @@
 | レイヤー名 | 区域                   | ズームレベル |
 | ---------- | ---------------------- | ------------ |
 | pref       | 府県予報区             | 4~14         |
-| firstarea  | 一次細分区             | 5~14         |
-| matomearea | 市町村等をまとめた地域 | 7~14         |
-| city       | 二次細分区             | 7~14         |
+| firstarea  | 一次細分区             | 4~14         |
+| matomearea | 市町村等をまとめた地域 | 4~14         |
+| city       | 二次細分区             | 4~14         |
 
 ### fields
 
@@ -47,7 +47,6 @@
 
 - [mapshaper](https://github.com/mbloch/mapshaper)
 - [tippecanoe](https://github.com/mapbox/tippecanoe)
-- [pmtiles CLI](https://docs.protomaps.com/pmtiles/cli)
 
 ## Make
 

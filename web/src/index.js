@@ -21,7 +21,7 @@ const map = new maplibregl.Map({
     sources: {
       'jmagis-vector': {
         type: 'vector',
-        url: `pmtiles://${HOST}tiles/jma.pmtiles`,
+        url: `pmtiles://${HOST}tiles/jma-gis.pmtiles`,
         attribution:
           '<a href="https://www.data.jma.go.jp/developer/gis.html">気象庁「予報区等GISデータ」</a>を加工して作成',
       },
