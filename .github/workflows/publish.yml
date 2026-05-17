@@ -1,0 +1,140 @@
+name: Publish GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Setup Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+          # https://pypi.org/project/tippecanoe/で代替
+          pip install tippecanoe==2.72.0
+
+      - name: Cache JMA source
+        id: cache-jma
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: jma/
+          key: jma-${{ hashFiles('scripts/00_*') }}
+          restore-keys: |
+            jma-
+
+      - name: Download JMA source
+        if: steps.cache-jma.outputs.cache-hit != 'true'
+        run: scripts/00_download_jma.sh
+        timeout-minutes: 10
+
+      - name: Cache jmacode
+        id: cache-jmacode
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: |
+            jmacode/
+          key: jmacode-${{ hashFiles('scripts/01_*', 'jma/AreaInformationCity.xls') }}
+          restore-keys: |
+            jmacode-
+
+      - name: Cache geojson
+        id: cache-geojson
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: |
+            geojson/
+          key: geojson-${{ hashFiles('scripts/02_*', 'jma/AreaInformationCity_weathre_GIS*', 'jmacode/**/*.csv') }}
+          restore-keys: |
+            geojson-
+
+      - name: Cache tiles
+        id: cache-tiles
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: |
+            tiles/
+          key: tiles-${{ hashFiles('scripts/03_*', 'geojson/**/*.geojson') }}
+          restore-keys: |
+            tiles-
+
+      - name: Generate jmacode
+        if: steps.cache-jmacode.outputs.cache-hit != 'true'
+        run: python scripts/01_make_jmacode.py
+        timeout-minutes: 10
+
+      - name: Generate geojson
+        if: steps.cache-geojson.outputs.cache-hit != 'true'
+        run: scripts/02_make_geojson.sh
+        timeout-minutes: 30
+
+      - name: Generate tiles
+        if: steps.cache-tiles.outputs.cache-hit != 'true'
+        run: scripts/03_make_tiles.sh
+        timeout-minutes: 30
+
+      - name: Build demo pages
+        run: npm run build
+        env:
+          VITE_APP_BASE: /${{ github.event.repository.name }}/
+
+      - name: Copy data and tiles
+        run: |
+          mkdir -p web/dist/tiles
+          mkdir -p web/dist/geojson
+          mkdir -p web/dist/jmacode
+          cp -p jmacode/*.csv web/dist/jmacode/
+          cp -p geojson/*.geojson web/dist/geojson/
+          cp -p tiles/*.pmtiles web/dist/tiles/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: web/dist
+
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
