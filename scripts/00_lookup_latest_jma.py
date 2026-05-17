@@ -38,7 +38,6 @@ def get_giszip_name():
         links = soup.find_all(
             "a", href=re.compile(r"\d{8}_AreaInformationCity_weather_GIS\.zip$")
         )
-        print(links)
         if links:
             latest = sorted(
                 (Path(link.get("href")).name for link in links), reverse=True

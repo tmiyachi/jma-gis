@@ -23,11 +23,11 @@ XMLZIP=$(cat latest_xmlzip.txt)
 # 気象庁公開の市町村等（気象警報等）GISデータのzipファイル名
 GISZIP=$(cat latest_giszip.txt)
 
-wget -N http://xml.kishou.go.jp/${XMLZIP}
+wget -q -N http://xml.kishou.go.jp/${XMLZIP}
 unzip -p ${XMLZIP} '*AreaInformationCity-AreaForecastLocalM*xls' >AreaInformationCity.xls
 
-wget -N https://www.data.jma.go.jp/developer/gis/${GISZIP}
-rm AreaInformationCity_weather_GIS.*
+wget -q -N https://www.data.jma.go.jp/developer/gis/${GISZIP}
+rm -f AreaInformationCity_weather_GIS.*
 
 unzip -p ${GISZIP} '*.shp' >AreaInformationCity_weather_GIS.shp
 unzip -p ${GISZIP} '*.dbf' >AreaInformationCity_weather_GIS.dbf
