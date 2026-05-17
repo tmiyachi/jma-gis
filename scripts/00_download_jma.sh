@@ -9,19 +9,26 @@
 # XMLZIPとGISZIPに指定する．
 set -eu
 
-cd $(dirname $0)
+PROJECT_DIR=$(cd $(dirname $0)/.. && pwd)
 
+cd ${PROJECT_DIR}
+
+# 最新ファイル名取得
+python scripts/00_lookup_latest_jma.py
+
+# GISファイル取得・解凍
+cd jma
 # 気象庁公開のXML個別コード表のzipファイル名
 XMLZIP=$(cat latest_xmlzip.txt)
 # 気象庁公開の市町村等（気象警報等）GISデータのzipファイル名
 GISZIP=$(cat latest_giszip.txt)
 
-aria2c http://xml.kishou.go.jp/${XMLZIP}
+wget -N http://xml.kishou.go.jp/${XMLZIP}
 unzip -p ${XMLZIP} '*AreaInformationCity-AreaForecastLocalM*xls' >AreaInformationCity.xls
-rm ${XMLZIP}
 
-aria2c https://www.data.jma.go.jp/developer/gis/${GISZIP}
+wget -N https://www.data.jma.go.jp/developer/gis/${GISZIP}
+rm AreaInformationCity_weather_GIS.*
+
 unzip -p ${GISZIP} '*.shp' >AreaInformationCity_weather_GIS.shp
 unzip -p ${GISZIP} '*.dbf' >AreaInformationCity_weather_GIS.dbf
 unzip -p ${GISZIP} '*.shx' >AreaInformationCity_weather_GIS.shx
-rm ${GISZIP}

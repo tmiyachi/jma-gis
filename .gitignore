@@ -1,13 +1,12 @@
-node_modules
+__pycache__/
+*.py[codz]
+*$py.class
 
-.vscode
 .venv
+venv/
 
-.node-version
-.python-version
+node_modules/
 
-jma/*
-!jma/*.sh
-!jma/*.py
+.vscode/
 
-sample/dist
+web/dist
