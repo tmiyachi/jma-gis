@@ -34,6 +34,7 @@ for layer in city matomearea firstarea pref; do
 
   tippecanoe --force \
     --generate-ids \
+    --no-progress-indicator \
     --layer="${layer}" --maximum-zoom=${maxzoom} --minimum-zoom=${minzoom} \
     -o tiles/${layer}.mbtiles \
     geojson/${layer}.geojson >/dev/null
@@ -41,18 +42,20 @@ done
 
 cd tiles
 
+ls -lh
 tile-join --force --name="jmagis" --description="JMA GIS vector tiles" --attribution="${ATTRIBUTION}" \
   -o jma-gis.mbtiles \
   pref.mbtiles firstarea.mbtiles matomearea.mbtiles city.mbtiles
+ls -lh
 
 # convert pmtiles
 if command -v pmtiles >/dev/null 2>&1; then
-  pmtiles convert tiles/jma-gis.mbtiles tiles/jma-gis.pmtiles
+  pmtiles convert jma-gis.mbtiles jma-gis.pmtiles
 else
   docker run --rm \
     -v "$(pwd)":/data \
     protomaps/go-pmtiles:latest \
-    pmtiles convert /data/jma-gis.mbtiles /data/jma-gis.pmtiles
+    convert /data/jma-gis.mbtiles /data/jma-gis.pmtiles
 fi
 
 # clean up
