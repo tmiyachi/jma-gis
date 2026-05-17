@@ -14,7 +14,7 @@ const map = new maplibregl.Map({
   container: 'map',
   center: [135, 35],
   zoom: 7,
-  maxZoom: 10,
+  maxZoom: 14,
   minZoom: 4,
   style: {
     version: 8,

@@ -96,6 +96,30 @@ npm run start
 
 ```
 
+## How To Use
+
+```js
+const protocol = new Protocol();
+maplibregl.addProtocol("pmtiles", protocol.tile);
+
+const map = new maplibregl.Map({
+  ...,
+  style: {
+    version: 8,
+    sources: {
+      v: {
+        type: "vector",
+        minzoom: 4,
+        maxzoom: 14,
+        url: "pmtiles://https://tmiyachi.github.io/jma-gis/jma-gis.pmtiles",
+        attribution:
+          '<a href="https://www.data.jma.go.jp/developer/gis.html">気象庁「予報区等GISデータ」</a>を加工して作成',
+      },
+    },
+  },
+});
+```
+
 ## Reference
 
 このデータの作成には気象庁公開のデータを利用しています．

@@ -36,23 +36,23 @@ for layer in city matomearea firstarea pref; do
     --generate-ids \
     --layer="${layer}" --maximum-zoom=${maxzoom} --minimum-zoom=${minzoom} \
     -o tiles/${layer}.mbtiles \
-    geojson/${layer}.geojson
+    geojson/${layer}.geojson >/dev/null
 done
 
 cd tiles
 
 tile-join --force --name="jmagis" --description="JMA GIS vector tiles" --attribution="${ATTRIBUTION}" \
-  -o jma.mbtiles \
+  -o jma-gis.mbtiles \
   pref.mbtiles firstarea.mbtiles matomearea.mbtiles city.mbtiles
 
 # convert pmtiles
 if command -v pmtiles >/dev/null 2>&1; then
-  pmtiles convert tiles/jma.mbtiles tiles/jma.pmtiles
+  pmtiles convert tiles/jma-gis.mbtiles tiles/jma-gis.pmtiles
 else
   docker run --rm \
     -v "$(pwd)":/data \
     protomaps/go-pmtiles:latest \
-    convert /data/tiles/jma.mbtiles /data/tiles/jma.pmtiles
+    pmtiles convert /data/jma-gis.mbtiles /data/jma-gis.pmtiles
 fi
 
 # clean up
