@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "maplibre-gl": "^5.2.0",
-    "mapshaper": "^0.6.113"
+    "mapshaper": "^0.6.113",
+    "pmtiles": "^4.4.1"
   },
   "devDependencies": {
     "eslint": "^9.22.0",
@@ -27,11 +28,11 @@
     "vite": "^8.0.3"
   },
   "scripts": {
-    "build": "vite build --config sample/vite.config.mjs",
-    "start": "vite dev --config sample/vite.config.mjs",
-    "lint:eslint": "eslint sample/src/**/*.js --config sample/eslint.config.mjs",
-    "lint:stylelint": "stylelint sample/src/**/*.css --config sample/stylelint.config.mjs",
-    "lint:prettier": "prettier sample/src/**/*.{js,css} --check --config sample/prettier.config.mjs",
+    "build": "vite build --config web/vite.config.mjs",
+    "start": "vite dev --config web/vite.config.mjs",
+    "lint:eslint": "eslint web/src/**/*.js --config web/eslint.config.mjs",
+    "lint:stylelint": "stylelint web/src/**/*.css --config web/stylelint.config.mjs",
+    "lint:prettier": "prettier web/src/**/*.{js,css} --check --config web/prettier.config.mjs",
     "lint": "run-p lint:*",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:stylelint": "npm run lint:stylelint -- --fix",

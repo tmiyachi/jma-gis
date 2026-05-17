@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     publicDir:
       mode === 'production'
         ? path.resolve(__dirname, 'public')
-        : path.resolve(__dirname, '../tiles'),
+        : path.resolve(__dirname, '../'),
     resolve: {
       extensions: ['.js'],
       alias: {
@@ -41,21 +41,10 @@ export default defineConfig(({ mode }) => {
 
     server: {
       port: 8080,
-      proxy: {
-        '/tiles': {
-          target: 'http://localhost:8080',
-          rewrite: (path) => path.replace(/^\/tiles/, ''),
-        },
+      proxy: {},
+      fs: {
+        allow: ['.', '../tiles'],
       },
-    },
-
-    define: {
-      MAPHOST:
-        mode === 'production'
-          ? JSON.stringify(
-              'https://raw.githubusercontent.com/tmiyachi/jma-gis/master',
-            )
-          : JSON.stringify(`http://localhost:8080`),
     },
   };
 });

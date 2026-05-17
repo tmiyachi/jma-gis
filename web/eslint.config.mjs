@@ -8,7 +8,7 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
  */
 export default defineConfig([
   {
-    ignores: ['dist/**/*', '.venv/**/*', 'sample/dist/**/*'],
+    ignores: ['dist/**/*', '.venv/**/*', 'web/dist/**/*'],
   },
   js.configs.recommended,
   eslintConfigPrettier,

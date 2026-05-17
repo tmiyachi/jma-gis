@@ -1,4 +1,4 @@
-pandas>2.0.0
-xlrd
-requests
-beautifulsoup4
+pandas==2.2.3
+xlrd==2.0.2
+requests==2.32.3
+beautifulsoup4==4.13.3

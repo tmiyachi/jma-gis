@@ -1,13 +1,16 @@
-import * as maplibregl from 'maplibre-gl';
+import maplibregl from 'maplibre-gl';
+import { Protocol } from 'pmtiles';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import '@/main.css';
 
-// タイルをホストしているサーバーのルート
-// eslint-disable-next-line no-undef
-const maphost = MAPHOST ?? 'http://localhost';
+/** ページのホスト */
+export const HOST = import.meta.env.VITE_APP_BASE || './';
+
+const protocol = new Protocol();
+maplibregl.addProtocol('pmtiles', protocol.tile);
 
 // マップオブジェクト
-const map = new maplibregl.default.Map({
+const map = new maplibregl.Map({
   container: 'map',
   center: [135, 35],
   zoom: 7,
@@ -18,7 +21,7 @@ const map = new maplibregl.default.Map({
     sources: {
       'jmagis-vector': {
         type: 'vector',
-        tiles: [`${maphost}/tiles/zxy/{z}/{x}/{y}.pbf`],
+        url: `pmtiles://${HOST}tiles/jma.pmtiles`,
         attribution:
           '<a href="https://www.data.jma.go.jp/developer/gis.html">気象庁「予報区等GISデータ」</a>を加工して作成',
       },
@@ -91,8 +94,8 @@ const map = new maplibregl.default.Map({
 });
 
 // コントロールの追加
-map.addControl(new maplibregl.default.ScaleControl());
-map.addControl(new maplibregl.default.NavigationControl());
+map.addControl(new maplibregl.ScaleControl());
+map.addControl(new maplibregl.NavigationControl());
 
 // loadイベント
 map.on('load', function () {

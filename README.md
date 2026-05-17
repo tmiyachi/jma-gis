@@ -1,6 +1,6 @@
 # JMA-GIS
 
-気象庁公開の予報区データを加工したベクトルタイル（データ基準日 2026/5/28）
+気象庁公開の予報区データを加工したベクトルタイル
 
 ## Demo
 
@@ -47,6 +47,7 @@
 
 - [mapshaper](https://github.com/mbloch/mapshaper)
 - [tippecanoe](https://github.com/mapbox/tippecanoe)
+- [pmtiles CLI](https://docs.protomaps.com/pmtiles/cli)
 
 ## Make
 
@@ -59,36 +60,35 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-気象庁データをダウンロードする．`jma/get_latest.py` を実行して最新のファイル名を取得する．
+気象庁データをダウンロードする．
 
 ```
-# ./jma
-python get_latest.py
-./get.sh
+# ./scripts
+./00_download_jma.sh
 ```
 
 XML コードテーブル表から csv ファイルを作成する．
 
 ```
-# ./jmacode
-python jmacode.py
+# ./scripts
+python 01_make_jmacode.py
 ```
 
 geoJSON ファイルを作成する．[mapshaper](https://github.com/mbloch/mapshaper)を使用してポリゴンの簡素化，統合をしている．
 
 ```
-# ./geojson
-./make.sh
+# ./scripts
+./02_make_geojson.sh
 ```
 
 ベクトルタイルを作成する．
 
 ```
-# ./tiles
-./make.sh
+# ./scripts
+./03_make_tiles.sh
 ```
 
-## Sample
+## Demo
 
 ```
 # ./
@@ -96,7 +96,7 @@ npm run start
 
 ```
 
-## Refference
+## Reference
 
 このデータの作成には気象庁公開のデータを利用しています．
 

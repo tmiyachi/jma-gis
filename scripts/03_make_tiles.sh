@@ -13,35 +13,47 @@ rm -f tiles/*.pmtiles
 rm -f tiles/*.mbtiles
 
 for layer in city matomearea firstarea pref; do
-    case $layer in
-    "city")
-        minzoom=7
-        maxzoom=14
-        ;;
-    "matomearea")
-        minzoom=7
-        maxzoom=14
-        ;;
-    "firstarea")
-        minzoom=5
-        maxzoom=14
-        ;;
-    "pref")
-        minzoom=4
-        maxzoom=14
-        ;;
-    esac
+  case $layer in
+  "city")
+    minzoom=7
+    maxzoom=14
+    ;;
+  "matomearea")
+    minzoom=7
+    maxzoom=14
+    ;;
+  "firstarea")
+    minzoom=5
+    maxzoom=14
+    ;;
+  "pref")
+    minzoom=4
+    maxzoom=14
+    ;;
+  esac
 
-    tippecanoe --force \
-        --generate-ids \
-        --layer="${layer}" --maximum-zoom=${maxzoom} --minimum-zoom=${minzoom} \
-        -o tiles/${layer}.mbtiles \
-        geojson/${layer}.geojson
+  tippecanoe --force \
+    --generate-ids \
+    --layer="${layer}" --maximum-zoom=${maxzoom} --minimum-zoom=${minzoom} \
+    -o tiles/${layer}.mbtiles \
+    geojson/${layer}.geojson
 done
 
 cd tiles
 
 tile-join --force --name="jmagis" --description="JMA GIS vector tiles" --attribution="${ATTRIBUTION}" \
-    --output-to-directory=${TILEDIR}/zxy --no-tile-compression \
-    pref.mbtiles firstarea.mbtiles matomearea.mbtiles city.mbtiles
-rm -f pref.mbtiles firstarea.mbtiles matomearea.mbtiles city.mbtiles
+  -o jma.mbtiles \
+  pref.mbtiles firstarea.mbtiles matomearea.mbtiles city.mbtiles
+
+# convert pmtiles
+if command -v pmtiles >/dev/null 2>&1; then
+  pmtiles convert tiles/jma.mbtiles tiles/jma.pmtiles
+else
+  docker run --rm \
+    -v "$(pwd)":/data \
+    protomaps/go-pmtiles:latest \
+    convert /data/tiles/jma.mbtiles /data/tiles/jma.pmtiles
+fi
+
+# clean up
+rm -f *.mbtiles
