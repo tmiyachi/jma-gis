@@ -42,6 +42,7 @@ const map = new maplibregl.Map({
             0.5,
           ],
         },
+        minzoom: 7,
       },
       {
         id: 'matomearea-lines',
@@ -53,6 +54,7 @@ const map = new maplibregl.Map({
           'line-color': '#627BC1',
           'line-opacity': 0.8,
         },
+        minzoom: 7,
       },
       {
         id: 'firstarea-fills',
